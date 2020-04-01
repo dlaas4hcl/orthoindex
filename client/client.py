@@ -17,8 +17,9 @@ def get_prediction(server_host='127.0.0.1', server_port=8500, model_name='ccd'):
     headers = {"content-type": "application/json"}
     json_response = requests.post('http://' + server_host + ':' + str(server_port) + '/v1/models/' + str(model_name) + ':predict',
                                   data=data, headers=headers)
-    print(json_response)
-    print(json.loads(json_response.text).predictions)
+    preds = json.loads(json_response.text)
+    index=np.argmax(preds['predictions'][0])
+    print(index)
     
 
 
