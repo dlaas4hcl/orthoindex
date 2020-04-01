@@ -18,7 +18,8 @@ def get_prediction(server_host='127.0.0.1', server_port=8500, model_name='ccd'):
     json_response = requests.post('http://' + server_host + ':' + str(server_port) + '/v1/models/' + str(model_name) + ':predict',
                                   data=data, headers=headers)
     print(json_response)
-    print(json.loads(json_response.text))
+    print(json.loads(json_response.text).predictions)
+    
 
 
 if __name__ == '__main__':
